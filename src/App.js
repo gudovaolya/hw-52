@@ -39,16 +39,29 @@ const generateNumbers = function(){
 let newNumbers = generateNumbers();
 
 class App extends Component {
+
+  state = {
+    newNumbers: newNumbers
+  }
+
+  changeNumbers = () => {
+    let newNumbers = this.state.newNumbers;
+    newNumbers = generateNumbers();
+    this.setState({newNumbers});
+  }
+
+
   render() {
     return (
       <div className="App">       
         <h1>Случайные числа</h1>
+        <button onClick={this.changeNumbers}>Change Numbers</button>  
         <div className="numbers">
-          <Numbers number = {newNumbers[0]} />
-          <Numbers number = {newNumbers[1]} />
-          <Numbers number = {newNumbers[2]} />
-          <Numbers number = {newNumbers[3]} />
-          <Numbers number = {newNumbers[4]} />
+          <Numbers number = {this.state.newNumbers[0]} />
+          <Numbers number = {this.state.newNumbers[1]} />
+          <Numbers number = {this.state.newNumbers[2]} />
+          <Numbers number = {this.state.newNumbers[3]} />
+          <Numbers number = {this.state.newNumbers[4]} />
         </div>
       </div>
     );
