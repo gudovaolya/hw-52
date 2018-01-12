@@ -50,19 +50,19 @@ class App extends Component {
     this.setState({newNumbers});
   }
 
-
   render() {
+
+    let numbersItem = this.state.newNumbers.map(function(item){
+      return(
+        <Numbers number = {item} />
+      );
+    });
+
     return (
       <div className="App">       
-        <h1>Случайные числа</h1>
-        <button onClick={this.changeNumbers}>Change Numbers</button>  
-        <div className="numbers">
-          <Numbers number = {this.state.newNumbers[0]} />
-          <Numbers number = {this.state.newNumbers[1]} />
-          <Numbers number = {this.state.newNumbers[2]} />
-          <Numbers number = {this.state.newNumbers[3]} />
-          <Numbers number = {this.state.newNumbers[4]} />
-        </div>
+        <h1>Генерация случайных чисел от 5 до 36</h1>
+        <button className="btn" onClick={this.changeNumbers}>New numbers</button>  
+        <div className="numbers">{numbersItem}</div>
       </div>
     );
   }
